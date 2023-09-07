@@ -1,0 +1,40 @@
+---
+permalink: concepts/concept_manage_disaster_recovery_setup_using_srm.html 
+sidebar: sidebar 
+keywords:  
+summary: 'Sie können erstellen und verwalten Sie die Disaster Recovery-Setup in Ihrem vCenter Server zusammen mit VMware Site Recovery Manager \(SRM\).' 
+---
+= Konfiguration der Disaster-Recovery-Einrichtung
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Erstellen und managen Sie die Disaster Recovery-Einrichtung in vCenter Server zusammen mit dem VMware Site Recovery Manager (SRM).
+
+VASA Provider verfügt nun über die Funktionen von Storage Replication Adapter (SRA). Wenn Sie VVols Datastores in Ihrem Datacenter konfiguriert haben, müssen Sie SRA für die Wiederherstellung von VVols Datastores nicht separat installieren, um das Disaster Recovery zu ermöglichen. Im Site Recovery Manager (SRM) müssen die geschützten und die Recovery-Standorte gekoppelt werden. Nach dem Pairing des Standorts muss im nächsten Teil der SRM-Konfiguration ein Array-Paar eingerichtet werden, das es dem SRM ermöglicht, mit dem Speichersystem zu kommunizieren, um Geräte und die Gerätereplizierung zu erkennen. Bevor Sie das Array-Paar konfigurieren können, müssen Sie zuerst ein Standortpaar in SRM erstellen.
+
+Diese Version der ONTAP-Tools bietet Ihnen eine Option zur Verwendung der synchronen SnapMirror Konfiguration für Disaster Recovery.
+
+
+NOTE: VMware Site Recovery Manager (SRM) verwendet SRA nicht für das Management der Disaster Recovery von VVols Datastores. Stattdessen wird VASA Provider für die Replizierung und Failover-Steuerung von VVols Datastores auf ONTAP 9.7 und höheren Clustern verwendet.
+
+Siehe link:../protect/task_enable_storage_replication_adapter.html["Aktivieren Sie Storage Replication Adapter"] Abschnitt für das Verfahren.
+
+.Aktivierung der Quick_Resync-Funktion
+Sie können das Flag Quick_Resync aktivieren, um den erneuten Schutz und die Wiederherstellung in SRA durchzuführen. Dies gilt nur für von Volumes mit asynchroner SnapMirror Beziehung gesicherte Datastores. Das Quick_Resync-Flag ermöglicht eine schnellere Resync-Zeit des Ziel-Volumes, da für die Neusynchronisierung kein Storage-Effizienzaufwand erforderlich ist
+Vor der Übertragung neuer Daten.
+Quick_Resync ist standardmäßig nicht aktiviert. Es wird empfohlen, das Flag Quick_Resync zu aktivieren:
+
+* Wenn die Volume-Effizienz für die Quelle der Neusynchronisierung nicht aktiviert ist.
+* Wenn die Resync-Zeit verkürzt wird, ist wichtiger als die Erhaltung der gesamten Storage-Effizienz im Netzwerk.
+
+
+Führen Sie die folgenden Schritte aus, um das Flag Quick_Resync zu aktivieren:
+
+.Schritte
+. Melden Sie sich am Bedienfeld unter _https://<IP address>:9083_ an, und klicken Sie auf die webbasierte CLI-Schnittstelle.
+. Führen Sie den Befehl aus `vp updateconfig -key=snapmirror.quick.resync.enabled -value=true`.
+. Führen Sie den Befehl aus `vp reloadconfig`.
+

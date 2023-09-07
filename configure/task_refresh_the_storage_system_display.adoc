@@ -1,0 +1,51 @@
+---
+permalink: configure/task_refresh_the_storage_system_display.html 
+sidebar: sidebar 
+keywords:  
+summary: Sie können die Update-Funktion von ONTAP® Tools für VMware vSphere verwenden, um die Informationen über Speichersysteme zu aktualisieren und ONTAP-Tools zur Erkennung von Speichersystemen zu zwingen. 
+---
+= Aktualisieren Sie die Anzeige des Speichersystems
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Sie können die Update-Funktion von ONTAP® Tools für VMware vSphere verwenden, um die Informationen über Speichersysteme zu aktualisieren und ONTAP-Tools zur Erkennung von Speichersystemen zu zwingen.
+
+*Über diese Aufgabe*
+
+Der `refresh` Die Option ist nützlich, wenn Sie die Standardanmeldeinformationen für die Speichersysteme nach Erhalt eines Authentifizierungsfehlers geändert haben. Sie sollten immer einen Aktualisierungsvorgang durchführen, wenn Sie die Anmeldedaten des Speichersystems geändert haben, nachdem das Speichersystem einen gemeldet hat `Authentication Failure Status`. Während des Updates versuchen die ONTAP Tools, mithilfe der neuen Zugangsdaten eine Verbindung zum Storage-System herzustellen.
+
+Je nach System-Setup kann dieser Vorgang viel Zeit in Anspruch nehmen.
+
+*Schritte*
+
+. Klicken Sie auf der VMware vSphere Client-Startseite auf *Storage*.
+. Starten Sie das Update:
++
+|===
+
+
+| *Wenn diese Lage ist...* | *Klicken...* 
+
+
+ a| 
+Virtual Storage Console
+ a| 
+Das Symbol * ALLE WIEDERENTDECKEN*.
+
+
+
+ a| 
+Rechenzentrum
+ a| 
+Klicken Sie mit der rechten Maustaste auf das Rechenzentrum, und klicken Sie dann auf *NetApp ONTAP Tools* > *Host- und Speicherdaten aktualisieren*.
+
+|===
+. Klicken Sie im Dialogfeld Host- und Speicherdaten aktualisieren auf *OK*.
++
+Je nach Anzahl der Hosts und Storage-Systeme in Ihrem Datacenter kann die Erkennung einige Minuten dauern. Dieser Erkennungsvorgang arbeitet im Hintergrund.
+
+. Klicken Sie im Dialogfeld Erfolg auf *OK*.
+

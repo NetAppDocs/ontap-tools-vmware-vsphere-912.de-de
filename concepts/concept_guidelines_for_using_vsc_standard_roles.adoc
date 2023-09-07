@@ -1,0 +1,40 @@
+---
+permalink: concepts/concept_guidelines_for_using_vsc_standard_roles.html 
+sidebar: sidebar 
+keywords:  
+summary: Wenn Sie mit Standard-ONTAP®-Tools für VMware vSphere-Rollen arbeiten, gibt es bestimmte Richtlinien, die Sie befolgen sollten. 
+---
+= Richtlinien zur Verwendung von Standardrollen in ONTAP-Tools
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Wenn Sie mit Standard-ONTAP®-Tools für VMware vSphere-Rollen arbeiten, gibt es bestimmte Richtlinien, die Sie befolgen sollten.
+
+Sie sollten die Standardrollen nicht direkt ändern. Wenn dies der Fall ist, überschreiben ONTAP Tools Ihre Änderungen bei jedem Upgrade der ONTAP Tools. Das Installationsprogramm aktualisiert die Standardrollendefinitionen jedes Mal, wenn Sie ONTAP-Tools aktualisieren. Dadurch wird sichergestellt, dass die Rollen für Ihre Version von ONTAP-Tools sowie für alle unterstützten Versionen von vCenter Server aktuell sind.
+
+Sie können jedoch die Standardrollen verwenden, um Rollen zu erstellen, die auf Ihre Umgebung zugeschnitten sind. Dazu sollten Sie die Standardrolle „ONTAP Tools“ kopieren und dann die kopierte Rolle bearbeiten. Wenn Sie eine neue Rolle erstellen, können Sie diese Rolle auch dann beibehalten, wenn Sie den Windows-Dienst für ONTAP-Tools neu starten oder aktualisieren.
+
+Folgende Standardrollen für ONTAP-Tools können u. a. verwendet werden:
+
+* Verwenden Sie die Standardrollen der ONTAP-Tools für alle Aufgaben mit ONTAP-Tools.
++
+In diesem Szenario bieten die Standardrollen alle Berechtigungen, die ein Benutzer zur Ausführung der Aufgaben der ONTAP-Tools benötigt.
+
+* Kombinieren Sie Rollen, um die Aufgaben zu erweitern, die ein Benutzer ausführen kann.
++
+Wenn die Standard-ONTAP-Tools-Rollen zu viel Granularität für Ihre Umgebung bieten, können Sie die Rollen erweitern, indem Sie Gruppen auf höherer Ebene erstellen, die mehrere Rollen enthalten.
+
++
+Wenn ein Benutzer andere Aufgaben, die nicht zu ONTAP gehören, ausführen muss, für die zusätzliche native vCenter Server-Berechtigungen erforderlich sind, können Sie eine Rolle erstellen, die diese Berechtigungen bereitstellt, und diese auch der Gruppe hinzufügen.
+
+* Erstellung feingranularer Rollen
++
+Wenn in Ihrem Unternehmen Rollen implementiert werden müssen, die restriktiver sind als die Standardrollen für ONTAP-Tools, können Sie mithilfe der Rollen im Bereich ONTAP-Tools neue Rollen erstellen.
+
++
+In diesem Fall klonen Sie die erforderlichen Rollen der ONTAP-Tools und bearbeiten dann die geklonte Rolle, sodass nur die Berechtigungen zum Benutzer gehören.
+
+

@@ -1,0 +1,32 @@
+---
+permalink: concepts/concept_privileges_required_for_vsc_tasks.html 
+sidebar: sidebar 
+keywords:  
+summary: Verschiedene ONTAP-Tools für VMware vSphere-Aufgaben erfordern unterschiedliche Kombinationen von Berechtigungen für ONTAP-Tools und native vCenter Server-Berechtigungen. 
+---
+= Erforderliche Berechtigungen für Aufgaben mit ONTAP-Tools
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Verschiedene ONTAP-Tools für VMware vSphere-Aufgaben erfordern unterschiedliche Kombinationen von Berechtigungen für ONTAP-Tools und native vCenter Server-Berechtigungen.
+
+Informationen zu den für Aufgaben mit ONTAP-Tools erforderlichen Berechtigungen finden Sie im NetApp Knowledge Base Artikel 1032542.
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Virtual_Storage_Console_for_VMware_vSphere/How_to_configure_RBAC_for_Virtual_Storage_Console["So konfigurieren Sie RBAC für die Virtual Storage Console"]
+
+
+
+== Product-Level-Berechtigung erforderlich, die von ONTAP Tools für VMware vSphere benötigt wird
+
+Um auf die ONTAP Tools für die VMware vSphere GUI zuzugreifen, müssen Sie über die für ONTAP Tools spezifische Produktberechtigung auf der richtigen vSphere Objektebene verfügen. Wenn Sie sich ohne diese Berechtigung anmelden, zeigt ONTAP Tools beim Klicken auf das Symbol NetApp eine Fehlermeldung an und verhindert, dass Sie auf ONTAP-Tools zugreifen können.
+
+Mit der Berechtigung *Ansicht* können Sie auf die Benutzeroberfläche der ONTAP-Tools zugreifen. Mit dieser Berechtigung können Sie keine Aufgaben in ONTAP-Tools ausführen. Um ONTAP-Tools-Aufgaben auszuführen, müssen Sie über die entsprechenden spezifischen und nativen Berechtigungen für ONTAP-Tools für diese Aufgaben verfügen.
+
+Die Zuweisungsebene legt fest, welche Teile der Benutzeroberfläche angezeigt werden können. Durch Zuweisen der Berechtigung Ansicht im Stammobjekt (Ordner) können Sie ONTAP-Tools aufrufen, indem Sie auf das Symbol NetApp klicken.
+
+Sie können die Berechtigung Ansicht einer anderen vSphere Objektebene zuweisen. Dadurch sind jedoch die Menüs der ONTAP Tools eingeschränkt, die Sie sehen und verwenden können.
+
+Das Root-Objekt ist der empfohlene Ort, um alle Berechtigungen zuzuweisen, die die View-Berechtigung enthalten.

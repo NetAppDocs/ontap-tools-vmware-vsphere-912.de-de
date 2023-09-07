@@ -1,0 +1,39 @@
+---
+permalink: concepts/reference_metrocluster_configurations_supported_by_ontap_tools_for_vmware_vsphere.html 
+sidebar: sidebar 
+keywords:  
+summary: Die ONTAP Tools für VMware vSphere unterstützen Umgebungen, die MetroCluster IP- und FC-Konfigurationen für ONTAP verwenden. Der Support erfolgt meistens automatisch. Bei der Verwendung einer MetroCluster Umgebung mit ONTAP Tools und VASA Provider können Sie jedoch auch einige Unterschiede erkennen. 
+---
+= Von ONTAP Tools unterstützte MetroCluster Konfigurationen
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Die ONTAP Tools für VMware vSphere unterstützen Umgebungen, die MetroCluster IP- und FC-Konfigurationen für ONTAP verwenden. Der Support erfolgt meistens automatisch. Bei der Verwendung einer MetroCluster Umgebung mit ONTAP Tools und VASA Provider können Sie jedoch auch einige Unterschiede erkennen.
+
+
+NOTE: SRA unterstützt keine MetroCluster-Konfigurationen.
+
+
+
+== MetroCluster Konfigurationen und ONTAP Tools
+
+Sie müssen sicherstellen, dass ONTAP Tools die Storage-System-Controller am primären und sekundären Standort erkennen. In der Regel erkennen ONTAP Tools automatisch Storage Controller. Wenn Sie eine Cluster-Management-LIF verwenden, sollten Sie überprüfen, ob ONTAP-Tools die Cluster an beiden Standorten erkannt haben. Andernfalls können Sie die Storage Controller manuell den ONTAP Tools hinzufügen. Sie können auch den Benutzernamen und das Passwort ändern, das die ONTAP Tools verwenden, um eine Verbindung zu den Storage Controllern herzustellen.
+
+Bei einem Switchover übernehmen die SVMs am sekundären Standort die over-Performance. Diese SVMs haben das Suffix „`-mc`“ mit ihren Namen angehängt. Falls während eines Umschalttavorgangs z. B. zur Bereitstellung eines Datastores ein Switchover stattfindet, wird der Name der SVM, in der sich der Datastore befindet, so geändert, dass sie das „`-mc`“-Suffix einschließen. Dieses Suffix wird beim Wechsel abgebrochen und die SVMs am primären Standort können die Steuerung fortsetzen.
+
+
+NOTE: Wenn Sie ONTAP Tools direkte SVMs mit MetroCluster Konfiguration hinzugefügt haben, wird nach der Umschaltung die Änderung des SVM-Namens (Zusatz des Suffix „`-mc`“) nicht übernommen. Alle anderen Switchover-Vorgänge werden weiterhin normal ausgeführt.
+
+Wenn ein Switchover oder Switchback erfolgt, kann es einige Minuten dauern, bis ONTAP Tools die Cluster automatisch erkennen und erkennen. Sollte dies während der Durchführung einer Operation von ONTAP Tools wie der Bereitstellung eines Datastores geschehen, kann es zu einer Verzögerung kommen.
+
+
+
+== MetroCluster Konfigurationen und VASA Provider
+
+VASA-Provider unterstützt automatisch Umgebungen, die MetroCluster-Konfigurationen verwenden. Die Umschaltung ist in VASA Provider-Umgebungen transparent. Sie können keine direkten SVMs zum VASA Provider hinzufügen.
+
+
+NOTE: VASA Provider fügt nach einem Switchover das Suffix „`-mc`“ nicht an die Namen der SVMs am sekundären Standort an.

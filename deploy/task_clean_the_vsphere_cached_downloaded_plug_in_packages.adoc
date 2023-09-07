@@ -1,0 +1,43 @@
+---
+permalink: deploy/task_clean_the_vsphere_cached_downloaded_plug_in_packages.html 
+sidebar: sidebar 
+keywords: clean up browser cache 
+summary: Wenn Plug-ins nach der Bereitstellung oder Aktualisierung von ONTAP Tools nicht automatisch aktualisiert werden, sollten Sie die im Cache gespeicherten Download-Plug-in-Pakete im Browser und auf dem vCenter Server bereinigen, um Probleme mit dem vCenter Server Plug-in zu lösen. 
+---
+= Löschen Sie die heruntergeladenen Plug-in-Pakete von vSphere im Cache
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+:firstname: [.lead]
+:author: [.lead]
+:authorinitials: [
+:authors: [.lead]
+:revnumber: 
+:revdate: you should clean up the cached download plug-in packages on the browser and on the vCenter Server to resolve vCenter Server plug-in issues.
+
+
+*Schritte*
+
+. Melden Sie sich von Ihrem vorhandenen vSphere Web-Client oder vSphere-UI ab.
+. Entfernen Sie den Browser-Cache.
+. Entfernen Sie die im Cache gespeicherten Plug-in-Pakete von vSphere Client. Führen Sie für VCSA die folgenden Schritte aus:
++
+.. SSH in die VCSA Appliance einbinden.
+.. Beenden Sie den VMware vSphere Client-Dienst:
+`service-control --stop vsphere-ui`
+.. Ändern Sie die Verzeichnisse in das Verzeichnis vCenter Client UI extensions: `cd /etc/vmware/vsphere-ui/vc-packages/vsphere-client-serenity`
+.. Entfernen Sie die zwischengespeicherten Plug-in-Pakete, die NetApp spezifisch sind, mithilfe des `rm -rf` Befehl:
++
+`rm -rf com.netapp.nvpf.webclient-*`
+
++
+`rm -rf com.netapp.vasa.vvol.webclient-*`
+
++
+`rm -rf com.netapp.vsch5-*`
+
+.. Starten Sie den VMware vSphere Client-Dienst:
+`service-control --start vsphere-ui`
+
+
+
