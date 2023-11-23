@@ -2170,4 +2170,10 @@ Sämtliche Details finden Sie im Folgenden.</block>
   <block id="c482036287311326fe268e793e8592b0" category="inline-image-macro">Neue Ressourcenzuordnung</block>
   <block id="3f8ca314615f7ceccc4e80b9ecdd18e7" category="list-text">Klicken Sie auf das <block ref="b0cd4e998161741b4ab585ccd5066812" category="inline-image-macro-rx" type="image"></block> Symbol zum Erstellen einer neuen Ressourcenzuordnung.</block>
   <block id="bdc5a4ba1115f3f724e1f81e7f41eeef" category="list-text">Klicken Sie mit der rechten Maustaste auf den Datastore, und wählen Sie *NetApp ONTAP Tools* &gt; *Größe des Datastore ohne VVols* aus.</block>
+  <block id="2d7ee85ca6eba61e2ebc56fcd9749a22" category="section-title">MetroCluster-Konfigurationen und SRA</block>
+  <block id="700f785cc3b0c94782ea099d30974628" category="paragraph">Der Storage Replication Adapter (SRA) unterstützt Umgebungen, die MetroCluster-Konfigurationen (MCC) mit dem NFS-, iSCSI- und FCP-Protokoll verwenden.</block>
+  <block id="b0cf503432f798961e23d246f3541857" category="paragraph">Als Voraussetzung für die MCC SRA-Konfiguration sollten alle SVM-Namen (Storage Virtual Machine) auf den MCC-Clustern eindeutig sein. Wenn die Namen nicht eindeutig sind, verursacht dies Konflikte und die SRA-Workflows scheitern.</block>
+  <block id="a3a5ab624299236efd1aa00751d3e9d9" category="paragraph">Erforderliche Aktionen:</block>
+  <block id="9a5bef2e6baedf8812a9649b615baf1a" category="list-text">Stellen Sie nach einer MCC-Umschaltung oder einem Switchback sicher, dass der Befehl „_snapmirror list-destinations_“ auf dem Quell-Cluster die richtige Ausgabe mit dem neuen SVM-Namen (&lt;vserver_name&gt;-mc) anzeigt. Die Ausführung des Befehls kann bis zu 30 Minuten dauern.</block>
+  <block id="44a62aa72367cca25b9e3f92da55ace0" category="list-text">Führen Sie DiscoverDevices über die SRM-Benutzeroberfläche aus, bevor Sie mit anderen SRA-Workflows fortfahren. Durch diesen Vorgang wird sichergestellt, dass SRM die Änderungen an den SVM-Namen nach einem Switchover oder Switchback erkennt.</block>
 </blocks>
