@@ -35,7 +35,7 @@ Upgrade von einer bestehenden Implementierung von ONTAP Tools
  a| 
 Das Upgrade-Verfahren, das von einer bereits vorhandenen Bereitstellung von ONTAP-Tools bis hin zu ONTAP-Tools durchgeführt wird, hängt von der Version der ONTAP-Tools ab und ob Sie ONTAP-Tools implementiert haben. Der Abschnitt zu Bereitstellungs-Workflows und Upgrade enthält weitere Informationen.
 
-link:concept_installation_workflow_for_existing_users_of_vsc.html["Implementierungs-Workflow für bestehende Benutzer von ONTAP-Tools"]
+link:concept_installation_workflow_for_existing_users_of_ontap_tools.html["Implementierungs-Workflow für bestehende Benutzer von ONTAP-Tools"]
 
 Best Practices vor einem Upgrade:
 
@@ -96,7 +96,7 @@ Sie können die empfohlenen ONTAP-Rollen mit ONTAP System Manager erstellen. Ver
 
 Wenn ein Benutzer versucht, eine Aufgabe ohne die entsprechenden Berechtigungen und Berechtigungen auszuführen, werden die Aufgabenoptionen ausgegraut.
 
-* link:../concepts/concept_standard_roles_packaged_with_virtual_appliance_for_vsc_vp_and_sra.html["Standardrollen in Paket mit ONTAP Tools"]
+* link:../concepts/concept_standard_roles_packaged_with_ontap_tools_for_vmware_vsphere.html["Standardrollen in Paket mit ONTAP Tools"]
 * link:../concepts/concept_ontap_role_based_access_control_feature_for_ontap_tools.html["Berechtigungen für ONTAP Storage-Systeme und vSphere-Objekte"]
 
 
